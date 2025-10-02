@@ -1,0 +1,14 @@
+from gpiozero import LED
+from time import sleep
+
+# Third Method
+
+# Generic Digital Output, used when controlling
+# devices that aren't LEDs. Doesn't add LED-specific
+# convenience methods
+pin = DigitalOutputDevice(17)
+
+pin.on()
+sleep(1)
+pin.off()
+sleep(1)

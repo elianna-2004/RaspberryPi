@@ -1,0 +1,4 @@
+from gpiozero import LED
+from time import sleep
+
+# Control and blink an LED

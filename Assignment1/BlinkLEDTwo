@@ -1,0 +1,9 @@
+from gpiozero import LED
+from time import sleep
+
+# Second Method
+led = LED(17)
+
+led.blink(on_time = 2, off_time = 1)
+sleep(6)
+led.off()

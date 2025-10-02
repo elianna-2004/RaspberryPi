@@ -1,0 +1,17 @@
+from gpiozero import LED
+from time import sleep
+ 
+
+# First method
+led = LED(17)
+
+led.on()
+print("LED is on")
+sleep(1)
+led.off()
+print("LED is off")
+sleep(1)
+
+
+
+
