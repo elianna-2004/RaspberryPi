@@ -18,3 +18,24 @@ from time import sleep
 
 # Longer pause of two seconds or more should insert a space 
 # between digits
+
+# Define button, Pi pin number GPIO27 
+# Default pull_up = True (default HIGH, press = LOW)
+button = Button(27, pull_up = True)
+
+# Define LED
+led = LED(17)
+
+button.wait_for_press()
+button.wait_for_release()
+
+if (button.held_time() <= 0.4):
+    led.blink(on_time = 0.2)
+    led.off()
+
+if (button.held_time() > 0.4):
+    led.blink(on_time = 0.6)
+    led.off()
+
+
+
