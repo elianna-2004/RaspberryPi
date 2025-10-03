@@ -30,7 +30,7 @@ button.wait_for_press()
 button.wait_for_release()
 
 # This is a dot
-if (button.hold_time() <= 0.4):
+if (button.hold_time <= 0.4):
 
     # First reflect with LED
     led.blink(on_time = 5)
@@ -38,7 +38,7 @@ if (button.hold_time() <= 0.4):
 
 
 # This is a dash
-if (button.hold_time() > 0.4):
+if (button.hold_time > 0.4):
 
     # First reflect with LED
     led.blink(on_time = 60)
