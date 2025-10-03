@@ -5,7 +5,7 @@ from time import sleep
 # Using a push button as input and an LED as output, 
 # you will enter number (0-9) in Morse Code.
 # The LED will echo each dot or dash as you press and the 
-# decoded digits will be printed on your terminial
+# decoded digits will be printed on your terminal
 
 # Short press (0.4 seconds or less) = dot
 # Long press (more than 0.4 seconds) = dash
@@ -27,27 +27,20 @@ button = Button(27, pull_up = True)
 led = LED(17)
 
 
-def held_action():
-    print("Button has been held for 1 second")
+#def held_action():
+    #print("Button has been held for 1 second")
 
 # Set button fields
-button.hold_time = 1
-button.when_held = held_action
+#button.hold_time = 1
+#button.when_held = held_action
 
 
 while True:
 
-    button.wait_for_press()
-    
-    if (button.held_time > 2):
+    while (button.is_pressed):
         led.on()
-        sleep(10)
-        led.off()
 
-    elif (button.held_time <= 2):
-        led.on()
-        sleep(1)
-        led.off()
+    led.off()
 
 
 
