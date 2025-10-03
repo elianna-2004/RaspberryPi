@@ -36,13 +36,18 @@ button.when_held = held_action
 
 
 while True:
+
     button.wait_for_press()
     
     if (button.held_time > 2):
-        led.long_blink()
+        led.on()
+        sleep(10)
+        led.off()
 
     elif (button.held_time <= 2):
-        led.short_blink()
+        led.on()
+        sleep(1)
+        led.off()
 
 
 
