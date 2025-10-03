@@ -29,22 +29,26 @@ led = LED(17)
 button.wait_for_press()
 button.wait_for_release()
 
-# This is a dot
-if (button.hold_time <= 0.4):
+while True:
+    button.wait_for_press()
+    button.wait_for_release()
 
-    # First reflect with LED
-    led.on()
-    sleep(0.2)
-    led.off()
+    # This is a dot
+    if (button.hold_time <= 0.4):
+
+        # First reflect with LED
+        led.on()
+        sleep(0.2)
+        led.off()
 
 
-# This is a dash
-if (button.hold_time > 0.4):
+    # This is a dash
+    if (button.hold_time > 0.4):
 
-    # First reflect with LED
-    led.on()
-    sleep(0.6)
-    led.off()
+        # First reflect with LED
+        led.on()
+        sleep(0.6)
+        led.off()
 
 
 
