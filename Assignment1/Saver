@@ -1,0 +1,89 @@
+from gpiozero import LED
+from gpiozero import button
+from time import sleep
+
+# Using a push button as input and an LED as output, 
+# you will enter number (0-9) in Morse Code.
+# The LED will echo each dot or dash as you press and the 
+# decoded digits will be printed on your terminial
+
+# Short press (0.4 seconds or less) = dot
+# Long press (more than 0.4 seconds) = dash
+
+# LED should echo after each press 
+# (short blink for dot, longer blink for dash)
+
+# If you pause for at least one second between taps
+# program will treat as end and decode number
+
+# Longer pause of two seconds or more should insert a space 
+# between digits
+
+# Define button, Pi pin number GPIO27 
+# Default pull_up = True (default HIGH, press = LOW)
+button = Button(27, pull_up = True)
+
+# Define LED
+led = LED(17)
+
+# Morse code definitions (0 = dot, 1 = dash)
+zero = [1, 1, 1, 1, 1]
+one = [0, 1, 1, 1, 1]
+two = [0, 0, 1, 1, 1]
+three = [0, 0, 0, 1, 1]
+four = [0, 0, 0, 0, 1]
+five = [0, 0, 0, 0, 0]
+six = [1, 0, 0, 0, 0]
+seven = [1, 1, 0, 0, 0]
+eight = [1, 1, 1, 0, 0]
+nine = [1, 1, 1, 1, 0]
+
+button.wait_for_press()
+button.wait_for_release()
+
+while (True):
+    # Read Morse Code list
+    new_num = []
+
+    button.wait_for_press()
+    button.wait_for_release()
+
+    # This is a dot
+    if (button.held_time() <= 0.4):
+
+        # First reflect with LED
+        led.blink(on_time = 0.2)
+        led.off()
+
+        # Add to list
+        new_num.append(0)
+
+    # This is a dash
+    if (button.held_time() > 0.4):
+
+        # First reflect with LED
+        led.blink(on_time = 0.6)
+        led.off()
+
+        # Add to list
+        new_num.append(0)
+
+    # Interpret Number
+    if (new_num == one):
+        print(1)
+    elif (new_num == two):
+        print(2)
+    elif (new_num == three):
+        print(3)
+    elif (new_num == four):
+        print(4)
+    elif (new_num == five):
+        print(5)
+    elif (new_num == six):
+        print(6)
+    elif (new_num == seven):
+        print(7)
+    elif (new_num == eight):
+        print(8)
+    elif (new_num == nine):
+        print(9)

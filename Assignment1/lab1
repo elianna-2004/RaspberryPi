@@ -26,65 +26,27 @@ button = Button(27, pull_up = True)
 # Define LED
 led = LED(17)
 
-# Morse code definitions (0 = dot, 1 = dash)
-zero = [1, 1, 1, 1, 1]
-one = [0, 1, 1, 1, 1]
-two = [0, 0, 1, 1, 1]
-three = [0, 0, 0, 1, 1]
-four = [0, 0, 0, 0, 1]
-five = [0, 0, 0, 0, 0]
-six = [1, 0, 0, 0, 0]
-seven = [1, 1, 0, 0, 0]
-eight = [1, 1, 1, 0, 0]
-nine = [1, 1, 1, 1, 0]
-
 button.wait_for_press()
 button.wait_for_release()
 
-while (True):
-    # Read Morse Code list
-    new_num = []
+# This is a dot
+if (button.held_time() <= 0.4):
 
-    button.wait_for_press()
-    button.wait_for_release()
+    # First reflect with LED
+    led.blink(on_time = 0.2)
+    led.off()
 
-    # This is a dot
-    if (button.held_time() <= 0.4):
+    # Add to list
+    new_num.append(0)
 
-        # First reflect with LED
-        led.blink(on_time = 0.2)
-        led.off()
+# This is a dash
+if (button.held_time() > 0.4):
 
-        # Add to list
-        new_num.append(0)
+    # First reflect with LED
+    led.blink(on_time = 0.6)
+    led.off()
 
-    # This is a dash
-    if (button.held_time() > 0.4):
 
-        # First reflect with LED
-        led.blink(on_time = 0.6)
-        led.off()
 
-        # Add to list
-        new_num.append(0)
 
-    # Interpret Number
-    if (new_num == one):
-        print(1)
-    elif (new_num == two):
-        print(2)
-    elif (new_num == three):
-        print(3)
-    elif (new_num == four):
-        print(4)
-    elif (new_num == five):
-        print(5)
-    elif (new_num == six):
-        print(6)
-    elif (new_num == seven):
-        print(7)
-    elif (new_num == eight):
-        print(8)
-    elif (new_num == nine):
-        print(9)
 
