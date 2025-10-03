@@ -34,7 +34,7 @@ while True:
     button.wait_for_release()
 
     # This is a dot
-    if (button.hold_time <= 0.4):
+    if (button.hold_time <= 2):
 
         # First reflect with LED
         led.on()
@@ -43,7 +43,7 @@ while True:
 
 
     # This is a dash
-    if (button.hold_time > 0.4):
+    if (button.hold_time > 2):
 
         # First reflect with LED
         led.on()
