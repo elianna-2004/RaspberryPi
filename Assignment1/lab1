@@ -33,15 +33,15 @@ button.wait_for_release()
 if (button.held_time() <= 0.4):
 
     # First reflect with LED
-    led.blink(on_time = 0.2)
+    led.blink(on_time = 5)
     led.off()
 
-    
+
 # This is a dash
 if (button.held_time() > 0.4):
 
     # First reflect with LED
-    led.blink(on_time = 0.6)
+    led.blink(on_time = 60)
     led.off()
 
 
