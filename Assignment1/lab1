@@ -31,24 +31,26 @@ button.wait_for_release()
 
 while True:
     button.wait_for_press()
-    button.wait_for_release()
 
-    # This is a dot
-    if (button.hold_time <= 2):
+    if (button.is_pressed):
+        #button.wait_for_release()
 
-        # First reflect with LED
-        led.on()
-        sleep(2)
-        led.off()
+        # This is a dot
+        if (button.held_time <= 2):
+
+            # First reflect with LED
+            led.on()
+            sleep(2)
+            led.off()
 
 
-    # This is a dash
-    if (button.hold_time > 2):
+        # This is a dash
+        elif (button.held_time > 2):
 
-        # First reflect with LED
-        led.on()
-        sleep(20)
-        led.off()
+            # First reflect with LED
+            led.on()
+            sleep(20)
+            led.off()
 
 
 
