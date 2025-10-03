@@ -38,9 +38,17 @@ led = LED(17)
 while True:
 
     while (button.is_pressed):
-        led.on()
+        counter += 0.1
 
-    led.off()
+    if (counter <= 0.4):
+        led.on()
+        sleep(1)
+        led.off()
+
+    elif (counter > 0.4):
+        led.on()
+        sleep(10)
+        led.off()
 
 
 
