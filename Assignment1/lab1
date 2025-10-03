@@ -36,6 +36,7 @@ led = LED(17)
 
 
 while True:
+    counter = 0
 
     while (button.is_pressed):
         counter += 0.1
