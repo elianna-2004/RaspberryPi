@@ -26,8 +26,6 @@ button = Button(27, pull_up = True)
 # Define LED
 led = LED(17)
 
-button.wait_for_press()
-button.wait_for_release()
 
 while True:
     button.wait_for_press()
