@@ -1,5 +1,5 @@
 from gpiozero import LED
-from gpiozero import button
+from gpiozero import Button
 from time import sleep
 
 # Using a push button as input and an LED as output, 
@@ -36,9 +36,7 @@ if (button.held_time() <= 0.4):
     led.blink(on_time = 0.2)
     led.off()
 
-    # Add to list
-    new_num.append(0)
-
+    
 # This is a dash
 if (button.held_time() > 0.4):
 
