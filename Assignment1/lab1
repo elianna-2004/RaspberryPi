@@ -77,32 +77,24 @@ def decode(array):
         print(9)
 
 
-# Runs when device remains active for hold_time seconds
-def held_action():
-    led.long_blink
-
-# Runs when device changes from inactive to active
-def pressed_action():
-    led.short_blink()
-
-
-# Set button fields
-#button.hold_time = 0.5
-#button.when_held = held_action
-#button.when_pressed = pressed_action
-#counter = 0.0
-morse_number = []
-counter = 0
-
 def main() :
     morse_number = []
     counter = 0
 
-    while (counter != 5):
+    while (True):
         start_pause = time()
 
         button.wait_for_press()
         end_pause = time()
+
+        # Decode Morse Number
+        if (pauseTime >= 1.0):
+            decode(morse_number)
+
+        # Insert Space
+        elif (pauseTime >= 2.0):
+            print(" ")
+
         start_press = time()
 
         button.wait_for_release()
@@ -123,13 +115,6 @@ def main() :
             morse_number.append(1)
             counter += 1
 
-    # Decode Morse Number
-    decode(morse_number)
-
-
-#print("Time paused: ", pauseTime)
-#print("Time pressed: ", pressTime)
- 
 
 main()
 
