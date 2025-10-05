@@ -95,39 +95,41 @@ morse_number = []
 counter = 0
 
 def main() :
-    start_pause = time()
+    morse_number = []
+    counter = 0
 
-    button.wait_for_press()
-    end_pause = time()
-    start_press = time()
+    while (counter != 5):
+        start_pause = time()
 
-    button.wait_for_release()
-    end_press = time()
+        button.wait_for_press()
+        end_pause = time()
+        start_press = time()
 
-    pressTime = end_press - start_press
-    pauseTime = end_pause - start_pause
+        button.wait_for_release()
+        end_press = time()
 
-    # Short Blink
-    if (pressTime <= 0.4):
-        short_blink()
-        morse_number.append(0)
-        counter += 1
+        pressTime = end_press - start_press
+        pauseTime = end_pause - start_pause
 
-    # Long Blink
-    elif (pressTime > 0.4):
-        long_blink()
-        morse_number.append(1)
-        counter += 1
+        # Short Blink
+        if (pressTime <= 0.4):
+            short_blink()
+            morse_number.append(0)
+            counter += 1
+
+        # Long Blink
+        elif (pressTime > 0.4):
+            long_blink()
+            morse_number.append(1)
+            counter += 1
 
     # Decode Morse Number
-    if (counter == 5):
-        decode(morse_number)
+    decode(morse_number)
 
 
-    print("Time paused: ", pauseTime)
-    print("Time pressed: ", pressTime)
-
-    
+#print("Time paused: ", pauseTime)
+#print("Time pressed: ", pressTime)
+ 
 
 main()
 
