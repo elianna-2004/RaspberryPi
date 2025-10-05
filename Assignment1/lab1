@@ -93,13 +93,14 @@ def main() :
         pauseTime = end_pause - start_pause
 
         # Decode Morse Number
-        if (pauseTime > 2.0):
-            print(final)
-            stop = False
+        if (pauseTime >= 2.0):
+            print(" ")
+            #stop = False
 
         # Insert Space
-        #elif (pauseTime >= 2.0):
-            #final = final + " "
+        elif (pauseTime >= 1.0):
+            print(final)
+            final = ""
 
         start_press = time()
 
