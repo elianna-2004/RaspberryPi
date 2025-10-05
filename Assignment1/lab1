@@ -81,9 +81,10 @@ def main() :
     morse_number = []
     counter = 0
     final = ""
+    stop = True
 
 
-    while (True):
+    while (stop):
         start_pause = time()
 
         button.wait_for_press()
@@ -92,12 +93,13 @@ def main() :
         pauseTime = end_pause - start_pause
 
         # Decode Morse Number
-        if (pauseTime >= 1.0):
+        if (pauseTime > 2.0):
             print(final)
+            stop = False
 
         # Insert Space
-        elif (pauseTime >= 2.0):
-            final = final + " "
+        #elif (pauseTime >= 2.0):
+            #final = final + " "
 
         start_press = time()
 
