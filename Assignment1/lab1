@@ -64,12 +64,12 @@ end_press = time()
 
 pressTime = end_press - start_press
 
-if (pressTime <= 0.4) {
+if (pressTime <= 0.4):
     short_blink()
 
-} elif (pressTime > 0.4) {
+elif (pressTime > 0.4):
     long_blink()
-}
+
 
 
 print("Time pressed: ", pressTime)
