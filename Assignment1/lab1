@@ -56,15 +56,16 @@ def pressed_action():
 #counter = 0.0
 
 
+button.wait_for_press()
 start = time()
 
-button.wait_for_press()
-
+button.wait_for_release()
 end = time()
 
 pressTime = end - start
 
-print("Time to press: ", pressTime)
+
+print("Time pressed: ", pressTime)
 
     
 
