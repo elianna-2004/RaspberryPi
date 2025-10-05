@@ -1,6 +1,7 @@
 from gpiozero import LED
 from gpiozero import Button
 from time import sleep
+from time import time
 
 # Using a push button as input and an LED as output, 
 # you will enter number (0-9) in Morse Code.
@@ -26,32 +27,46 @@ button = Button(27, pull_up = True)
 # Define LED
 led = LED(17)
 
+def long_blink():
+    led.on()
+    sleep(0.6)
+    led.off()
+    sleep(0.6)
 
-#def held_action():
-    #print("Button has been held for 1 second")
+
+def short_blink():
+    led.on()
+    sleep(0.2)
+    led.off()
+    sleep(0.2)
+
+# Runs when device remains active for hold_time seconds
+def held_action():
+    led.long_blink
+
+# Runs when device changes from inactive to active
+def pressed_action():
+    led.short_blink()
+
 
 # Set button fields
-#button.hold_time = 1
+#button.hold_time = 0.5
 #button.when_held = held_action
-counter = 0.0
+#button.when_pressed = pressed_action
+#counter = 0.0
 
-while True:
-    button.wait_for_press()
 
-    while (button.is_pressed):
-        counter += 0.1
+start = time()
 
-    if (counter > 0.0 and counter <= 0.4):
-        led.on()
-        sleep(1)
-        led.off()
+button.wait_for_press()
 
-    elif (counter > 0.4):
-        led.on()
-        sleep(10)
-        led.off()
+end = time()
+
+pressTime = end - start
+
+print("Time to press: ", pressTime)
+
     
-    counter = 0.0
 
 
 
