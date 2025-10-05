@@ -95,7 +95,7 @@ def main() :
         # Decode Morse Number
         if (pauseTime > 2.0):
             print(final)
-            #stop = False
+            stop = False
 
         # Insert Space
         #elif (pauseTime >= 2.0):
