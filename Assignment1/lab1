@@ -57,12 +57,19 @@ def pressed_action():
 
 
 button.wait_for_press()
-start = time()
+start_press = time()
 
 button.wait_for_release()
-end = time()
+end_press = time()
 
-pressTime = end - start
+pressTime = end_press - start_press
+
+if (pressTime <= 0.4) {
+    short_blink()
+
+} elif (pressTime > 0.4) {
+    long_blink()
+}
 
 
 print("Time pressed: ", pressTime)
