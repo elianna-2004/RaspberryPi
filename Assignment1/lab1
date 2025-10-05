@@ -27,6 +27,18 @@ button = Button(27, pull_up = True)
 # Define LED
 led = LED(17)
 
+# Morse code definitions (0 = dot, 1 = dash)
+zero = [1, 1, 1, 1, 1]
+one = [0, 1, 1, 1, 1]
+two = [0, 0, 1, 1, 1]
+three = [0, 0, 0, 1, 1]
+four = [0, 0, 0, 0, 1]
+five = [0, 0, 0, 0, 0]
+six = [1, 0, 0, 0, 0]
+seven = [1, 1, 0, 0, 0]
+eight = [1, 1, 1, 0, 0]
+nine = [1, 1, 1, 1, 0]
+
 def long_blink():
     led.on()
     sleep(0.6)
@@ -39,6 +51,31 @@ def short_blink():
     sleep(0.2)
     led.off()
     sleep(0.2)
+
+def decode(array):
+
+    # Interpret Number
+    if (array == zero):
+        print(0)
+    elif (array == one):
+        print(1)
+    elif (array == two):
+        print(2)
+    elif (array == three):
+        print(3)
+    elif (array == four):
+        print(4)
+    elif (array == five):
+        print(5)
+    elif (array == six):
+        print(6)
+    elif (array == seven):
+        print(7)
+    elif (array == eight):
+        print(8)
+    elif (array == nine):
+        print(9)
+
 
 # Runs when device remains active for hold_time seconds
 def held_action():
@@ -54,28 +91,44 @@ def pressed_action():
 #button.when_held = held_action
 #button.when_pressed = pressed_action
 #counter = 0.0
+morse_number = []
+counter = 0
+
+def main() :
+    start_pause = time()
+
+    button.wait_for_press()
+    end_pause = time()
+    start_press = time()
+
+    button.wait_for_release()
+    end_press = time()
+
+    pressTime = end_press - start_press
+    pauseTime = end_pause - start_pause
+
+    # Short Blink
+    if (pressTime <= 0.4):
+        short_blink()
+        morse_number.append(0)
+        counter += 1
+
+    # Long Blink
+    elif (pressTime > 0.4):
+        long_blink()
+        morse_number.append(1)
+        counter += 1
+
+    # Decode Morse Number
+    if (counter == 5):
+        decode(morse_number)
 
 
-button.wait_for_press()
-start_press = time()
-
-button.wait_for_release()
-end_press = time()
-
-pressTime = end_press - start_press
-
-if (pressTime <= 0.4):
-    short_blink()
-
-elif (pressTime > 0.4):
-    long_blink()
-
-
-
-print("Time pressed: ", pressTime)
+    print("Time paused: ", pauseTime)
+    print("Time pressed: ", pressTime)
 
     
 
-
+main()
 
 
