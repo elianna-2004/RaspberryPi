@@ -81,11 +81,14 @@ def main() :
     morse_number = []
     counter = 0
 
+
     while (True):
         start_pause = time()
 
         button.wait_for_press()
         end_pause = time()
+
+        pauseTime = end_pause - start_pause
 
         # Decode Morse Number
         if (pauseTime >= 1.0):
@@ -101,7 +104,6 @@ def main() :
         end_press = time()
 
         pressTime = end_press - start_press
-        pauseTime = end_pause - start_pause
 
         # Short Blink
         if (pressTime <= 0.4):
