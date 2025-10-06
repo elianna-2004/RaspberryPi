@@ -80,6 +80,8 @@ def decode(array):
 def main() :
     morse_number = []
     counter = 0
+    temp = ""
+    full_number = ""
     #stop = True
 
 
@@ -117,14 +119,19 @@ def main() :
         else:
 
             # Print decoded to terminal
-            print(decode(morse_number))
+            temp = temp + decode(morse_number)
+            final = final + temp
+
             morse_number = []
             counter = 0
+            temp = ""
 
         
 
         if (pauseTime >= 2.0 ):
-
+            print(final)
+            final = ""
+            
             # Add a space
             print(" ")
                 
