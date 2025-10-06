@@ -81,7 +81,7 @@ def main() :
     morse_number = []
     counter = 0
     temp = ""
-    full_number = ""
+    final = ""
     #stop = True
 
 
@@ -131,7 +131,7 @@ def main() :
         if (pauseTime >= 2.0 ):
             print(final)
             final = ""
-            
+
             # Add a space
             print(" ")
                 
