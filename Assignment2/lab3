@@ -31,24 +31,25 @@ def surprised():
     servo_two.max(); led_two.value = 1.0; sleep(1)
     
 try:
-        
-    #button.wait_for_press
 
-    # Increment Counter
-    if (button.is_pressed):
-        counter += 1
+    while True:  
+        button.wait_for_press
 
-    if (counter == 1):
-        neutral()
+        # Increment Counter
+        if (button.is_pressed):
+            counter += 1
 
-    elif (counter == 2):
-        wink()
+        if (counter == 1):
+            neutral()
 
-    elif (counter == 3):
-        surprised()
+        elif (counter == 2):
+            wink()
 
-        # Set Counter Back to 0
-        counter = 0
+        elif (counter == 3):
+            surprised()
+
+            # Set Counter Back to 0
+            counter = 0
         
 except KeyboardInterrupt:
     servo_one.mid() # park servo at neutral (≈90°)
