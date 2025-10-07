@@ -29,8 +29,9 @@ def wink():
 
 # Surprised Expression (Both LEDs bright)
 def surprised():
+
     servo_one.value = (0.4); led_one.value = 1.0
-    servo_two.value = (0.4); led_two.value = 1.0
+    servo_two.value = (-0.4); led_two.value = 1.0
     sleep(1)
     
 try:
