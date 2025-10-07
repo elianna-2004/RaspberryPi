@@ -16,36 +16,48 @@ button = Button(27, pull_up = True)
 counter = 0
 
 # Neutral Expression (Both LEDs dim)
-
 def neutral():
-    servo_one; led_one.value = 0.3; sleep(1)
-    servo_two; led_two.value = 0.3; sleep(1)
+    servo_one.mid(); led_one.value = 0.3; sleep(1)
+    servo_two.mid(); led_two.value = 0.3; sleep(1)
 
 # Wink Expression (One LED on, One LED off)
-
 def wink():
-    led_one.value = 0.0; sleep(1)
-    led_two.value = 1.0; sleep(1)
+    servo_one.mid(); led_one.value = 0.0; sleep(1)
+    servo_two.value = 0.50; led_two.value = 1.0; sleep(1)
+
 # Surprised Expression (Both LEDs bright)
-
 def surprised():
-    led_one.value = 1.0; sleep(1)
-    led_two.value = 1.0; sleep(1)
+    servo_one.max(); led_one.value = 1.0; sleep(1)
+    servo_two.max(); led_two.value = 1.0; sleep(1)
     
+try:
+    while True:
+        if (button.is_pressed):
 
-if (button.is_pressed):
+            # Increment Counter
+            counter += 1
 
-    # Increment Counter
-    counter += 1
+        if (counter == 1):
+            neutral()
 
-    if (counter == 1):
-        neutral()
+        elif (counter == 2):
+            wink()
 
-    elif (counter == 2):
-        wink()
+        elif (counter == 3):
+            surprised()
 
-    elif (counter == 3):
-        surprised()
+            # Set Counter Back to 0
+            counter = 0;
+        
+except KeyboardInterrupt:
+    servo_one.mid() # park servo at neutral (≈90°)
+    servo_two.mid() 
+    led_one.off() # turn LED off
+    led_two.off()
+    sleep(0.5)
+    servo_one.detach()
+    servo_two.detach()
 
-        # Set Counter Back to 0
-        counter = 0;
+
+
+
