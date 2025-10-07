@@ -4,7 +4,7 @@ from time import sleep
 led = PWMLED(18)
 
 
-led.value = 0.5
+led.value = 1.0
 
 led.on()
 sleep(1)
