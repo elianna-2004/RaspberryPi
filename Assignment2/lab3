@@ -47,7 +47,7 @@ try:
             surprised()
 
             # Set Counter Back to 0
-            counter = 0;
+            counter = 0
         
 except KeyboardInterrupt:
     servo_one.mid() # park servo at neutral (≈90°)
