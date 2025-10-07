@@ -1,0 +1,19 @@
+from gpiozero import PWMLED, Servo, Button
+from time import sleep
+
+# Assign 2 LEDs
+led_one = PWMLED()
+led_two = PWMLED()
+
+# Assign 2 Servos
+servo_one = Servo()
+servo_two = Servo()
+
+# Assign Button
+button = Button()
+
+# Neutral Expression (Both LEDs dim)
+
+# Wink Expression (One LED on, One LED off)
+
+# Surprised Expression (Both LEDs bright)
