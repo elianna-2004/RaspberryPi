@@ -12,8 +12,35 @@ servo_two = Servo()
 # Assign Button
 button = Button()
 
+# Button Counter
+counter = 0
+
 # Neutral Expression (Both LEDs dim)
+
+def neutral():
 
 # Wink Expression (One LED on, One LED off)
 
+def wink():
+
 # Surprised Expression (Both LEDs bright)
+
+def surprised():
+    
+
+if (button.is_pressed):
+
+    # Increment Counter
+    counter += 1
+
+    if (counter == 1):
+        neutral()
+
+    elif (counter == 2):
+        wink()
+
+    elif (counter == 3):
+        surprised()
+
+        # Set Counter Back to 0
+        counter = 0;
