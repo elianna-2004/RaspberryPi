@@ -23,8 +23,8 @@ def neutral():
 
 # Wink Expression (One LED on, One LED off)
 def wink():
-    servo_one.mid(); led_one.value = 0.0
-    servo_two.value = 0.50; led_two.value = 1.0
+    servo_one.max(); led_one.value = 0.0
+    servo_two.min(); led_two.value = 1.0
     sleep(1)
 
 # Surprised Expression (Both LEDs bright)
