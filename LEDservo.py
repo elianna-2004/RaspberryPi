@@ -1,6 +1,6 @@
 from gpiozero import PWMLED, Servo
 from time import sleep
-led = PWMLED(18)
+led = PWMLED(24)
 servo =Servo(17,min_pulse_width=0.5/1000,max_pulse_width=2.5/1000)
 try:
     while True:
