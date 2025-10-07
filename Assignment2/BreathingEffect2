@@ -1,0 +1,18 @@
+from gpiozero import PWMLED
+from time import sleep
+
+led = PWDLED(18)
+
+try:
+    while True:
+
+        for i in range(0, 101, 5):  # Fade in
+            led.value = (i/100)
+            sleep(0.05)
+
+        for i in range(100, -1, -5):
+            led.value = (i/100)     # Fade out
+            sleep(0.05)
+
+except KeyboardInterrupt:
+    led.off()  # Turn off LED before quitting
