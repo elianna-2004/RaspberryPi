@@ -1,0 +1,27 @@
+import smbus
+import time
+
+# (System Management Bus) is a subset or simpler version of the
+# I2C protocol. Most I2C devices work fine with SMBus Commands
+
+bus = smbus.SMBus(1)
+
+addr = 0x68
+
+try:
+    while True:
+        data = bus.read_i2c_block_data(addr, 0x3B, 2)
+        val = data[0] << 8 | data[1]
+        
+        if (val >= 0x8000):
+            val -= 0x10000
+
+        aX = val / 16384.0
+
+        print(f"ACC(g): x={aX: .3f}")
+        time.sleep(0.1)
+
+
+except KeyboardInterrupt:
+    print("\nstopping..")
+    bus.close()
